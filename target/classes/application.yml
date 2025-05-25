@@ -1,0 +1,45 @@
+spring:
+  profiles:
+    active: dev  # Change to 'dev' when running locally, 'prod' for production
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:remindlydb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  server:
+    port: 8080
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/remindly
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: your_prod_user
+    password: your_secure_password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  server:
+    port: 8080
