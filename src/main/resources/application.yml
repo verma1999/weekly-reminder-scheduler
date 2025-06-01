@@ -24,6 +24,22 @@ spring:
       path: /h2-console
   server:
     port: 8080
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: verma.aditya1999@gmail.com
+    password: kxzadtefgqqrkvpu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+twilio:
+  account-sid:  AC7179c1d3dcd92f2b824826834fdb5927
+  auth-token: 5ab7cf02745f0665f435a9676cc33fc3
+  from-number: whatsapp:+14155238886
 
 ---
 

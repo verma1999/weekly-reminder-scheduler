@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,11 +17,17 @@ public class Reminder {
 
     private String title;
     private String description;
+    private LocalTime time;
+    private String recipient;
+    private boolean active;
 
     @Enumerated(EnumType.STRING)
-    private DayOfWeek dayOfWeek;
+    private RepeatType repeatType;
 
-    private LocalTime time;
-    private String recipient; // email/WhatsApp number
-    private boolean active;
+    @ElementCollection(targetClass = DayOfWeek.class)
+    @Enumerated(EnumType.STRING)
+    private List<DayOfWeek> daysOfWeek;
+
+    private boolean emailPreferred;
+    private boolean whatsappPreferred;
 }
